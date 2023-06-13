@@ -1,0 +1,11 @@
+<div class="container mx-auto my-10">
+  <h1 class="text-4xl mb-10">Angular TODO App</h1>
+  <form (submit)="addTodo(newTodo.value); newTodo.value = ''" class="mb-10">
+    <input type="text" #newTodo placeholder="Add a todo" class="px-2 py-1 border rounded" required>
+    <button type="submit" class="bg-blue-500 text-white px-2 py-1 rounded mx-2">Agregar</button>
+  </form>
+  <div *ngFor="let todo of todos" class="mb-4 p-2 border rounded">
+    <input class="mx-3" type="checkbox" [checked]="todo.completed" (change)="updateTodo(todo.id, todo.title, !todo.completed)">
+    <span [class.line-through]="todo.completed">{{ todo.title }}</span>
+  </div>
+</div>
